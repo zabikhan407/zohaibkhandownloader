@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZOHAIB KHAN | ALL TYPE VIDEO DOWNLOADER — TERMINAL v7.0 FINAL</title>
+<meta name="description" content="ZOHAIB KHAN All Type Video Downloader — YouTube, TikTok, Instagram, Facebook videos in all video and audio formats.">
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+:root{--neon:#00ff41;--neon-dim:#00b32d;--bg:#050505;--panel:rgba(0,0,0,.94);--red:#ff3355;--yellow:#ffe600;--cyan:#00e5ff}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--neon);font-family:'Share Tech Mono',monospace;margin:0;min-height:100vh;overflow-x:hidden;position:relative}
+#matrix{position:fixed;inset:0;z-index:0;opacity:.16;pointer-events:none}
+.scanlines{position:fixed;inset:0;z-index:1;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(0,0,0,.22) 0 1px,transparent 1px 3px)}
+.wrap{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;padding:28px 12px 40px}
+.terminal{border:2px solid var(--neon);padding:34px 22px 26px;background:var(--panel);width:100%;max-width:880px;position:relative;box-shadow:0 0 28px rgba(0,255,65,.22),inset 0 0 42px rgba(0,255,65,.04)}
+.terminal::before{content:"SYSTEM_ACCESS: GRANTED";position:absolute;top:-13px;left:18px;background:var(--bg);padding:0 10px;font-size:12px;border:1px solid var(--neon);letter-spacing:1px}
+.terminal::after{content:"v7.0 FINAL";position:absolute;top:-13px;right:18px;background:var(--bg);padding:0 10px;font-size:12px;border:1px solid var(--neon);color:var(--yellow)}
+h1{font-size:clamp(1.7rem,6vw,3rem);text-shadow:0 0 16px var(--neon),0 0 42px rgba(0,255,65,.5);margin:2px 0 4px;letter-spacing:3px;text-align:center;line-height:1.15}
+.glitch{animation:flicker 4s infinite}
+@keyframes flicker{0%,96%,100%{opacity:1}97%{opacity:.55}98%{opacity:1}99%{opacity:.7}}
+.headline{text-align:center;color:#fff;font-size:clamp(.95rem,3.4vw,1.35rem);letter-spacing:2px;text-shadow:0 0 10px var(--cyan);margin:6px 0 2px}
+.tagline{color:#fff;text-align:center;margin:8px 0 4px;font-size:12px;opacity:.75;letter-spacing:1px}
+.badges{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin:16px 0 20px}
+.badge{border:1px solid var(--neon-dim);color:var(--neon);padding:4px 10px;font-size:11px;letter-spacing:1px;background:rgba(0,255,65,.05)}
+.badge.hot{border-color:var(--yellow);color:var(--yellow)}
+.input-row{display:flex;gap:8px;flex-wrap:wrap}
+input[type=text]{flex:1 1 260px;background:transparent;border:1px solid var(--neon);color:var(--neon);padding:14px;outline:none;text-align:center;font-family:inherit;font-size:14px;min-width:0}
+input[type=text]::placeholder{color:rgba(0,255,65,.55)}
+input[type=text]:focus{box-shadow:0 0 14px rgba(0,255,65,.4)}
+button{font-family:inherit;text-transform:uppercase;cursor:pointer;transition:.25s;border:1px solid var(--neon)}
+.mini-btn{background:transparent;color:var(--neon);padding:12px 14px;font-size:12px;letter-spacing:1px}
+.mini-btn:hover{background:rgba(0,255,65,.14);box-shadow:0 0 12px rgba(0,255,65,.35)}
+#detect{font-size:12px;color:var(--cyan);min-height:18px;text-align:center;margin-top:8px;letter-spacing:1px}
+#mainBtn{width:100%;background:var(--neon);color:#000;border:none;padding:15px;font-weight:bold;font-size:1.08rem;letter-spacing:2px;clip-path:polygon(4% 0,100% 0,96% 100%,0 100%);margin-top:12px}
+#mainBtn:hover:not(:disabled){box-shadow:0 0 30px var(--neon);transform:scale(1.015)}
+#mainBtn:disabled{opacity:.55;cursor:wait}
+#log{margin-top:20px;font-size:13px;text-align:left;min-height:44px;border:1px dashed rgba(0,255,65,.4);padding:10px 12px;display:none;white-space:pre-wrap;word-break:break-word}
+#log .ok{color:var(--neon)} #log .warn{color:var(--yellow)} #log .err{color:var(--red)} #log .dim{color:#9d9d9d}
+#modeLine{font-size:11px;text-align:center;margin-top:10px;color:#9d9d9d;letter-spacing:1px}
+#resultBox{margin-top:20px;display:none;padding:15px;border:1px dashed var(--neon)}
+.media-head{display:flex;gap:14px;flex-wrap:wrap;align-items:flex-start}
+.media-head img{width:168px;max-width:44vw;border:1px solid var(--neon);box-shadow:0 0 14px rgba(0,255,65,.3)}
+.media-meta{flex:1 1 220px;min-width:0}
+.media-meta .ttl{color:#fff;font-size:15px;line-height:1.45;word-break:break-word}
+.media-meta .sub{font-size:12px;color:#bdbdbd;margin-top:6px;line-height:1.7}
+.copy-btn{background:transparent;color:var(--cyan);border-color:var(--cyan);padding:5px 10px;font-size:11px;margin-top:8px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
+@media(max-width:640px){.cols{grid-template-columns:1fr}.terminal{padding:28px 14px 20px}}
+.col{border:1px solid rgba(0,255,65,.5);padding:12px;background:rgba(0,255,65,.03)}
+.col h3{margin:2px 0 12px;text-align:center;color:#fff;letter-spacing:2px;font-size:15px;text-shadow:0 0 8px var(--neon)}
+.col h3 .cnt{color:var(--yellow);font-size:12px}
+.frow{display:flex;align-items:center;gap:8px;border:1px dashed rgba(0,255,65,.35);padding:8px;margin-bottom:8px;flex-wrap:wrap}
+.frow .q{color:var(--yellow);font-size:16px;min-width:62px}
+.frow .info{flex:1 1 120px;font-size:11px;color:#cfcfcf;line-height:1.55;min-width:0}
+.dl-btn{background:#fff;color:#000;padding:9px 13px;text-decoration:none;font-weight:bold;text-align:center;font-size:12px;letter-spacing:1px;border:none;display:inline-block}
+.dl-btn:hover{background:var(--neon);box-shadow:0 0 16px var(--neon)}
+.empty-note{font-size:12px;color:#bdbdbd;text-align:center;padding:8px;line-height:1.6}
+.section{margin-top:26px;border-top:1px solid rgba(0,255,65,.35);padding-top:18px}
+.section h2{color:#fff;font-size:16px;letter-spacing:2px;text-align:center;margin:0 0 12px;text-shadow:0 0 8px var(--neon)}
+.section p,.section li{font-size:13px;line-height:1.75;color:#d7ffd7}
+.section ul{margin:6px 0;padding-left:20px}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+@media(max-width:640px){.steps{grid-template-columns:1fr}}
+.step{border:1px dashed rgba(0,255,65,.4);padding:10px;font-size:12px;line-height:1.65;color:#d7ffd7}
+.step b{color:var(--yellow)}
+#historyBox{display:none;margin-top:20px;border:1px dashed rgba(0,229,255,.5);padding:12px}
+#historyBox h3{margin:2px 0 10px;color:var(--cyan);font-size:13px;letter-spacing:2px;text-align:center}
+.hist-item{display:block;width:100%;text-align:left;background:transparent;color:var(--neon);border:1px dashed rgba(0,255,65,.3);padding:8px 10px;margin-bottom:7px;font-size:12px;word-break:break-all}
+.hist-item:hover{background:rgba(0,255,65,.1)}
+.hist-item span{color:#9d9d9d;font-size:11px}
+.wa-link{color:var(--neon);text-decoration:none;border:1px solid var(--neon);padding:9px 16px;display:inline-block;margin-top:16px;font-size:12px;letter-spacing:1px}
+.wa-link:hover{box-shadow:0 0 16px rgba(0,255,65,.45)}
+.footer{text-align:center;margin-top:8px}
+.about-txt{max-width:680px;margin:0 auto}
+.small{font-size:11px;opacity:.65;line-height:1.7}
+</style>
+</head>
+<body>
+<canvas id="matrix"></canvas>
+<div class="scanlines"></div>
+<div class="wrap">
+<div class="terminal">
+  <h1 class="glitch">ZOHAIB ALI KHAN</h1>
+  <div class="headline">ZOHAIB KHAN — ALL TYPE VIDEO DOWNLOADER</div>
+  <div class="tagline">&gt;&gt; BYPASSING TIKTOK / IG / FB / YT SERVERS &lt;&lt;</div>
+  <div class="badges">
+    <span class="badge">YOUTUBE</span><span class="badge">TIKTOK</span><span class="badge">INSTAGRAM</span>
+    <span class="badge">FACEBOOK</span><span class="badge">X / TWITTER</span><span class="badge">DAILYMOTION</span>
+    <span class="badge">VIMEO</span><span class="badge hot">1000+ SITES VIA BACKEND</span>
+  </div>
+  <div class="input-row">
+    <input type="text" id="targetUrl" placeholder=">> PASTE VIDEO LINK HERE <<" autocomplete="off" spellcheck="false">
+    <button class="mini-btn" id="pasteBtn" type="button">[ PASTE ]</button>
+    <button class="mini-btn" id="clearBtn" type="button">[ CLEAR ]</button>
+  </div>
+  <div id="detect">&gt;&gt; STANDBY — link paste karo, platform khud pehchan lunga...</div>
+  <button id="mainBtn" type="button">EXTRACT MEDIA</button>
+  <div id="log"></div>
+  <div id="modeLine"></div>
+  <div id="resultBox">
+    <div style="font-size:12px;color:var(--yellow);letter-spacing:1px">[ SOURCE DECRYPTED — SAARAY FORMATS NECHE HAIN ]</div>
+    <div class="media-head" style="margin-top:12px">
+      <img id="thumb" alt="" style="display:none">
+      <div class="media-meta">
+        <div class="ttl" id="metaTitle"></div>
+        <div class="sub" id="metaSub"></div>
+        <button class="copy-btn" id="copyBtn" type="button">[ COPY LINK ]</button>
+      </div>
+    </div>
+    <div class="cols">
+      <div class="col"><h3>VIDEO FORMATS <span class="cnt" id="vCount"></span></h3><div id="videoList"></div></div>
+      <div class="col"><h3>AUDIO FORMATS <span class="cnt" id="aCount"></span></h3><div id="audioList"></div></div>
+    </div>
+    <p class="small" style="margin-top:10px">Note: 720p / 1080p jaisi bari qualities YouTube par aksar <b>video-only</b> hoti hain — BACKEND mode mein server unke sath audio khud merge karke deta hai. Sirf RapidAPI (bina backend) mode mein kabhi kabhi seedha link 403 de sakta hai — ye YouTube ki pabandi hai, site ka fault nahi.</p>
+  </div>
+  <div id="historyBox"><h3>[ RECENT DOWNLOADS ]</h3><div id="historyList"></div></div>
+  <div class="section">
+    <h2>[ HOW TO USE — 3 STEPS ]</h2>
+    <div class="steps">
+      <div class="step"><b>STEP 1:</b><br>YouTube / TikTok / Instagram / Facebook se video ka link copy karo.</div>
+      <div class="step"><b>STEP 2:</b><br>Upar box mein PASTE karo aur <b>EXTRACT MEDIA</b> dabao — platform khud detect ho jayega.</div>
+      <div class="step"><b>STEP 3:</b><br>Neeche VIDEO column se quality (1080p / 720p / 480p...) ya AUDIO column se bitrate chun kar DOWNLOAD dabao. Bas!</div>
+    </div>
+  </div>
+  <div class="section">
+    <h2>[ FEATURES ]</h2>
+    <ul>
+      <li><b>Saaray formats, aik sath:</b> Video aik taraf, Audio doosri taraf — har format ke samne uska apna DOWNLOAD button.</li>
+      <li><b>403 Fix (Backend Mode):</b> Download server ke through stream hota hai, is liye googlevideo wala 403 jhanjhat khatam.</li>
+      <li><b>1080p with sound:</b> Backend video-only formats ke sath best audio merge karke deta hai (ffmpeg).</li>
+      <li><b>1000+ sites:</b> Backend yt-dlp par chalta hai — YouTube, TikTok, IG, FB, X aur bohat si sites supported.</li>
+      <li><b>Recent history</b>, paste / copy buttons, mobile-friendly hacker terminal, no-watermark jahan source deta hai.</li>
+      <li><b>Sach wali audio quality:</b> YouTube audio asal mein max ~160 kbps hota hai — jo sites "320 kbps YouTube" likhti hain, wo jhoot bolti hain. Yahan asal bitrate hi dikhega.</li>
+    </ul>
+  </div>
+  <div class="section footer">
+    <h2>[ ABOUT ]</h2>
+    <p class="about-txt"><b style="color:#fff">ZOHAIB KHAN ALL TYPE VIDEO DOWNLOADER</b> — aik hi terminal, har platform. Link paste karo, format chuno, download karo. Na faltu drama, na aik-button wali purani majboori — ab har quality aur har audio bitrate tumhare samne hai, bilkul hacker style mein. Ye tool sirf personal use ke liye hai — <i>download only videos you have permission for.</i></p>
+    <a href="https://wa.me/923477411934" target="_blank" rel="noopener" class="wa-link">[ CONTACT ADMIN ]</a>
+    <p class="small" style="margin-top:14px">ENCRYPTED BY ZOHAIB ALI KHAN &copy; 2026 &nbsp;|&nbsp; TERMINAL v7.0 FINAL</p>
+  </div>
+</div>
+</div>
+<script>
+/* ================================================================
+   CONFIG — yahan apni settings badlo
+   ----------------------------------------------------------------
+   BACKEND_URL: Agar apna backend (server.js) chala rakha hai to
+   uska address yahan likho, maslan "https://mysite.onrender.com"
+   ya "http://193.x.x.x:3000". KHALI ("") rakho to site pehle
+   same-origin /api/extract try karegi (jab index.html aur server
+   aik hi jaga hon), warna neeche wali RapidAPI mode chalegi.
+   Backend mode hi asal FULL FINAL hai — 403 khatam, 1080p merge ke sath.
+   ----------------------------------------------------------------
+   RAPIDAPI wali key page source mein SAB ko nazar aati hai
+   (purani site par bhi nazar aa rahi thi) — is liye is key ko
+   RapidAPI dashboard se ROTATE / change kar lena behtar hai.
+   Backend mode mein is key ki zaroorat hi nahi parti.
+================================================================ */
+var BACKEND_URL = "";
+var RAPIDAPI_KEY = "176025bf69mshec84f6c55a36568p1666a1jsn47586a6cf514";
+var RAPIDAPI_HOST = "social-download-all-in-one.p.rapidapi.com";
+
+/* ---------- Matrix rain (halka sa, mobile-friendly) ---------- */
+(function () {
+  var cv = document.getElementById('matrix'), ctx = cv.getContext('2d');
+  var cols = 0, drops = [], W = 0, H = 0, FONT = 14;
+  function size() {
+    W = cv.width = window.innerWidth; H = cv.height = window.innerHeight;
+    cols = Math.min(70, Math.floor(W / FONT)); drops = [];
+    for (var i = 0; i < cols; i++) drops[i] = Math.random() * (H / FONT);
+  }
+  size(); window.addEventListener('resize', size);
+  var chars = 'アイウエオカキクケコサシスセソ0123456789ABCDEF<>/\\|#$%';
+  function tick() {
+    if (!document.hidden) {
+      ctx.fillStyle = 'rgba(5,5,5,0.08)'; ctx.fillRect(0, 0, W, H);
+      ctx.fillStyle = '#00ff41'; ctx.font = FONT + 'px monospace';
+      for (var i = 0; i < cols; i++) {
+        var ch = chars[Math.floor(Math.random() * chars.length)];
+        ctx.fillText(ch, i * FONT, drops[i] * FONT);
+        if (drops[i] * FONT > H && Math.random() > 0.976) drops[i] = 0;
+        drops[i] += 0.6;
+      }
+    }
+    setTimeout(function () { requestAnimationFrame(tick); }, 50);
+  }
+  tick();
+})();
+
+/* ---------- helpers ---------- */
+var $ = function (id) { return document.getElementById(id); };
+var urlInput = $('targetUrl'), logEl = $('log'), mainBtn = $('mainBtn');
+var lastResultUrl = '';
+
+function esc(s) {
+  return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+    return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+  });
+}
+function fmtSize(bytes) {
+  if (!bytes || isNaN(bytes)) return '';
+  var u = ['B', 'KB', 'MB', 'GB'], i = 0, n = Number(bytes);
+  while (n >= 1024 && i < u.length - 1) { n /= 1024; i++; }
+  return n.toFixed(n >= 100 ? 0 : 1) + ' ' + u[i];
+}
+function detectPlatform(raw) {
+  var u = String(raw || '').toLowerCase();
+  if (/youtube\.com|youtu\.be/.test(u)) return 'YOUTUBE';
+  if (/tiktok\.com/.test(u)) return 'TIKTOK';
+  if (/instagram\.com|instagr\.am/.test(u)) return 'INSTAGRAM';
+  if (/facebook\.com|fb\.watch|fb\.com/.test(u)) return 'FACEBOOK';
+  if (/twitter\.com|x\.com/.test(u)) return 'X / TWITTER';
+  if (/dailymotion\.com|dai\.ly/.test(u)) return 'DAILYMOTION';
+  if (/vimeo\.com/.test(u)) return 'VIMEO';
+  if (/reddit\.com/.test(u)) return 'REDDIT';
+  if (/soundcloud\.com/.test(u)) return 'SOUNDCLOUD';
+  if (/^https?:\/\//.test(u)) return 'WEB LINK';
+  return '';
+}
+urlInput.addEventListener('input', function () {
+  var p = detectPlatform(urlInput.value);
+  $('detect').textContent = p ? '>> PLATFORM DETECTED: [ ' + p + ' ]' : '>> STANDBY — link paste karo, platform khud pehchan lunga...';
+});
+urlInput.addEventListener('keydown', function (e) { if (e.key === 'Enter') startExtraction(); });
+$('pasteBtn').addEventListener('click', function () {
+  if (navigator.clipboard && navigator.clipboard.readText) {
+    navigator.clipboard.readText().then(function (t) {
+      if (t) { urlInput.value = t.trim(); urlInput.dispatchEvent(new Event('input')); }
+    }).catch(function () { urlInput.focus(); });
+  } else urlInput.focus();
+});
+$('clearBtn').addEventListener('click', function () {
+  urlInput.value = ''; urlInput.dispatchEvent(new Event('input'));
+  $('resultBox').style.display = 'none'; logEl.style.display = 'none'; urlInput.focus();
+});
+$('copyBtn').addEventListener('click', function () {
+  var link = lastResultUrl || urlInput.value.trim();
+  if (link && navigator.clipboard) navigator.clipboard.writeText(link).then(function () {
+    $('copyBtn').textContent = '[ COPIED ✓ ]';
+    setTimeout(function () { $('copyBtn').textContent = '[ COPY LINK ]'; }, 1500);
+  });
+});
+mainBtn.addEventListener('click', startExtraction);
+
+/* ---------- terminal log ---------- */
+var logTimers = [];
+function logReset() { logTimers.forEach(clearTimeout); logTimers = []; logEl.innerHTML = ''; logEl.style.display = 'block'; }
+function logLine(text, cls, delay) {
+  logTimers.push(setTimeout(function () {
+    var div = document.createElement('div');
+    if (cls) div.className = cls;
+    div.textContent = text;
+    logEl.appendChild(div);
+  }, delay || 0));
+}
+function logError(msg) {
+  logLine('', '', 350);
+  logLine('!! ERROR: ' + msg, 'err', 400);
+  logLine('>> Tip: link dobara check karo — video public honi chahiye. Age-restricted / private videos download nahi hotin.', 'dim', 450);
+}
+
+/* ---------- history (localStorage, last 8) ---------- */
+function getHistory() { try { return JSON.parse(localStorage.getItem('zohaib_dl_history') || '[]'); } catch (e) { return []; } }
+function saveHistory(item) {
+  var h = getHistory().filter(function (x) { return x.url !== item.url; });
+  h.unshift(item); h = h.slice(0, 8);
+  try { localStorage.setItem('zohaib_dl_history', JSON.stringify(h)); } catch (e) {}
+  renderHistory();
+}
+function renderHistory() {
+  var h = getHistory(), box = $('historyBox'), list = $('historyList');
+  if (!h.length) { box.style.display = 'none'; return; }
+  box.style.display = 'block'; list.innerHTML = '';
+  h.forEach(function (item) {
+    var b = document.createElement('button');
+    b.className = 'hist-item'; b.type = 'button';
+    b.innerHTML = esc(item.title || item.url) + '<br><span>' + esc(item.platform || '') + ' · ' + esc(item.when || '') + '</span>';
+    b.addEventListener('click', function () { urlInput.value = item.url; urlInput.dispatchEvent(new Event('input')); startExtraction(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
+    list.appendChild(b);
+  });
+}
+renderHistory();
+</script>
+<script>
+/* ---------- result rendering: 2 columns ---------- */
+function renderResult(data) {
+  lastResultUrl = data.webpage_url || urlInput.value.trim();
+  $('resultBox').style.display = 'block';
+  var th = $('thumb');
+  if (data.thumbnail) { th.src = data.thumbnail; th.style.display = 'block'; } else th.style.display = 'none';
+  $('metaTitle').textContent = data.title || 'Untitled';
+  var sub = [];
+  if (data.platform) sub.push('PLATFORM: ' + data.platform);
+  if (data.uploader) sub.push('UPLOADER: ' + data.uploader);
+  if (data.durationLabel) sub.push('DURATION: ' + data.durationLabel);
+  else if (data.duration) sub.push('DURATION: ' + Math.floor(data.duration / 60) + ':' + String(Math.floor(data.duration % 60)).padStart(2, '0'));
+  $('metaSub').innerHTML = sub.map(esc).join('<br>');
+
+  $('vCount').textContent = '(' + data.videos.length + ')';
+  $('aCount').textContent = '(' + data.audios.length + ')';
+  var vl = $('videoList'), al = $('audioList');
+  vl.innerHTML = ''; al.innerHTML = '';
+
+  if (!data.videos.length) vl.innerHTML = '<div class="empty-note">Is link mein video format nahi mila.<br>(Photo / sirf-audio wala link ho sakta hai)</div>';
+  data.videos.forEach(function (v) {
+    var row = document.createElement('div'); row.className = 'frow';
+    var info = [];
+    info.push((v.ext || 'mp4').toUpperCase());
+    if (v.fps) info.push(Math.round(v.fps) + ' FPS');
+    if (v.sizeLabel) info.push(v.sizeLabel); else if (v.size) info.push(fmtSize(v.size));
+    if (v.hasAudio === false && data.source === 'backend-yt-dlp') info.push('VIDEO-ONLY → backend audio merge karega');
+    if (v.hasAudio === true) info.push('SOUND KE SATH');
+    row.innerHTML = '<div class="q">' + esc(v.quality || v.label || '') + '</div>' +
+      '<div class="info">' + esc(info.join(' · ')) + '</div>';
+    var a = document.createElement('a');
+    a.className = 'dl-btn'; a.textContent = 'DOWNLOAD'; a.href = v.dl; a.setAttribute('download', '');
+    if (data.source !== 'backend-yt-dlp') { a.target = '_blank'; a.rel = 'noopener'; }
+    row.appendChild(a); vl.appendChild(row);
+  });
+
+  if (!data.audios.length) al.innerHTML = '<div class="empty-note">Alag audio format nahi mila.<br>Video formats mein sound shamil ho sakta hai.</div>';
+  data.audios.forEach(function (au) {
+    var row = document.createElement('div'); row.className = 'frow';
+    var info = [];
+    info.push((au.ext || 'm4a').toUpperCase());
+    if (au.sizeLabel) info.push(au.sizeLabel); else if (au.size) info.push(fmtSize(au.size));
+    row.innerHTML = '<div class="q">' + esc(au.quality || (au.abr + 'k')) + '</div>' +
+      '<div class="info">' + esc(info.join(' · ') || 'AUDIO ONLY') + '</div>';
+    var a = document.createElement('a');
+    a.className = 'dl-btn'; a.textContent = 'DOWNLOAD'; a.href = au.dl; a.setAttribute('download', '');
+    if (data.source !== 'backend-yt-dlp') { a.target = '_blank'; a.rel = 'noopener'; }
+    row.appendChild(a); al.appendChild(row);
+  });
+
+  $('resultBox').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+/* ---------- BACKEND mode ---------- */
+function backendDownloadUrl(base, srcUrl, item, kind) {
+  var q = new URLSearchParams({
+    url: srcUrl, format_id: item.format_id, kind: kind,
+    title: '', quality: item.quality || '', ext: item.ext || '',
+    has_audio: item.hasAudio ? '1' : '0'
+  });
+  return base + '/api/download?' + q.toString();
+}
+function normalizeBackend(data, srcUrl, base) {
+  var out = {
+    source: 'backend-yt-dlp', title: data.title, thumbnail: data.thumbnail,
+    duration: data.duration, durationLabel: data.durationLabel,
+    uploader: data.uploader, platform: data.platform, webpage_url: data.webpage_url || srcUrl,
+    videos: [], audios: []
+  };
+  (data.videos || []).forEach(function (v) {
+    var item = Object.assign({}, v);
+    item.dl = backendDownloadUrl(base, srcUrl, v, 'video');
+    out.videos.push(item);
+  });
+  (data.audios || []).forEach(function (a2) {
+    var item = Object.assign({}, a2);
+    item.dl = backendDownloadUrl(base, srcUrl, a2, 'audio');
+    out.audios.push(item);
+  });
+  // download filename ke liye title set karo (server sanitize kar lega)
+  out.videos.forEach(function (v) { v.dl = v.dl.replace('title=', 'title=' + encodeURIComponent(out.title || '')); });
+  out.audios.forEach(function (a2) { a2.dl = a2.dl.replace('title=', 'title=' + encodeURIComponent(out.title || '')); });
+  return out;
+}
+async function tryBackend(srcUrl) {
+  var bases = [];
+  if (BACKEND_URL) bases.push(BACKEND_URL.replace(/\/$/, ''));
+  bases.push(''); // same-origin
+  for (var i = 0; i < bases.length; i++) {
+    var base = bases[i];
+    try {
+      var resp = await fetch(base + '/api/extract', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ url: srcUrl })
+      });
+      if (resp.status === 404 || resp.status === 501) continue; // backend hi nahi hai yahan
+      var data = await resp.json().catch(function () { return null; });
+      if (!resp.ok) throw new Error((data && data.error) || ('Backend error ' + resp.status));
+      if (!data || (!data.videos && !data.audios)) continue;
+      return { data: normalizeBackend(data, srcUrl, base), base: base };
+    } catch (e) {
+      if (BACKEND_URL) throw e; // user ne khud backend set kiya hai — usi ki error dikhao
+      if (i === bases.length - 1 && bases.length > 1 && BACKEND_URL) throw e;
+      // same-origin par backend nahi mila to RapidAPI par fall through
+      if (String(e.message || '').indexOf('Backend error') === 0) continue;
+      if (e.name === 'TypeError') continue;
+      throw e;
+    }
+  }
+  return null;
+}
+
+/* ---------- RapidAPI FALLBACK mode — AB SAARAY formats ---------- */
+function qualityNum(m) {
+  var q = String(m.quality || m.label || m.resolution || '');
+  var match = q.match(/(\d{3,4})\s*p/i);
+  if (match) return parseInt(match[1], 10);
+  if (/2160|4k/i.test(q)) return 2160;
+  if (/1440|2k/i.test(q)) return 1440;
+  if (/1080|fullhd|full hd/i.test(q)) return 1080;
+  if (/\bhd\b|720/i.test(q)) return 720;
+  if (/\bsd\b|480/i.test(q)) return 480;
+  if (/360/i.test(q)) return 360;
+  var abr = m.abr || m.bitrate || m.audioBitrate;
+  if (abr) return Math.round(Number(abr) > 1000 ? Number(abr) / 1000 : Number(abr));
+  return 0;
+}
+function normalizeRapid(data, srcUrl) {
+  var out = {
+    source: 'rapidapi', title: data.title || data.caption || 'Untitled',
+    thumbnail: data.thumbnail || data.picture || data.cover || null,
+    duration: typeof data.duration === 'number' ? data.duration : null, durationLabel: null,
+    uploader: data.author || data.uploader || null,
+    platform: detectPlatform(srcUrl) || 'WEB', webpage_url: srcUrl, videos: [], audios: []
+  };
+  var medias = Array.isArray(data.medias) ? data.medias.slice() : [];
+  if (!medias.length && data.url) medias = [{ url: data.url, type: 'video' }];
+  if (!medias.length && Array.isArray(data.links)) medias = data.links.map(function (l) { return { url: l.url || l.link, type: l.type || 'video', quality: l.quality, extension: l.extension || l.ext }; });
+  var vSeen = {}, aSeen = {};
+  medias.forEach(function (m) {
+    if (!m || !m.url) return;
+    if (/tiktok\.com\/@/.test(m.url) && /googlevideo|tiktokcdn/.test(m.url) === false && m.type === 'video' && medias.length > 1) { /* page link skip */ }
+    var ext = String(m.extension || m.ext || (m.url.split('?')[0].split('.').pop() || '')).toLowerCase().slice(0, 5);
+    var type = String(m.type || '').toLowerCase();
+    var isAudio = type === 'audio' || ext === 'mp3' || ext === 'm4a' || ext === 'opus';
+    var qn = qualityNum(m);
+    if (isAudio) {
+      var abr = qn || 128;
+      var keyA = abr + '|' + ext;
+      if (aSeen[keyA]) return; aSeen[keyA] = 1;
+      out.audios.push({ quality: abr + 'k', abr: abr, ext: ext || 'mp3', size: m.size || m.filesize || null, sizeLabel: m.size ? fmtSize(m.size) : '', dl: m.url, _q: abr });
+    } else {
+      var height = qn || 360;
+      var keyV = height + '|' + ext;
+      if (vSeen[keyV]) return; vSeen[keyV] = 1;
+      out.videos.push({ quality: height + 'p', height: height, ext: ext || 'mp4', fps: m.fps || null, size: m.size || m.filesize || null, sizeLabel: m.size ? fmtSize(m.size) : '', hasAudio: undefined, dl: m.url, _q: height });
+    }
+  });
+  out.videos.sort(function (a, b) { return b._q - a._q; });
+  out.audios.sort(function (a, b) { return b._q - a._q; });
+  return out;
+}
+async function tryRapidApi(srcUrl) {
+  var resp = await fetch('https://' + RAPIDAPI_HOST + '/v1/social/autolink', {
+    method: 'POST',
+    headers: { 'x-rapidapi-key': RAPIDAPI_KEY, 'x-rapidapi-host': RAPIDAPI_HOST, 'Content-Type': 'application/json' },
+    body: JSON.stringify({ url: srcUrl })
+  });
+  var data = await resp.json().catch(function () { return null; });
+  if (!resp.ok || !data) throw new Error('RapidAPI se jawab nahi aya (status ' + resp.status + '). Key / quota check karo, ya backend mode use karo.');
+  var out = normalizeRapid(data, srcUrl);
+  if (!out.videos.length && !out.audios.length) throw new Error('Is link se koi format extract nahi hua. Doosra link try karo ya backend mode lagao.');
+  return out;
+}
+
+/* ---------- MAIN ---------- */
+async function startExtraction() {
+  var url = urlInput.value.trim();
+  logReset();
+  if (!url) { logLine('!! URL REQUIRED — pehle link paste karo !!', 'err', 0); return; }
+  if (!/^https?:\/\//i.test(url)) { logLine('!! Ye sahi link nahi lag raha — https:// wala poora link paste karo !!', 'err', 0); return; }
+  var platform = detectPlatform(url) || 'WEB';
+  mainBtn.disabled = true; mainBtn.textContent = 'EXTRACTING...';
+  $('resultBox').style.display = 'none';
+  logLine('> TARGET LOCKED: [ ' + platform + ' ]', 'dim', 0);
+  logLine('[ ANALYZING PACKETS... ]', 'warn', 200);
+  logLine('[ BYPASSING SERVER CHECKS... ]', 'warn', 600);
+  logLine('[ DECRYPTING SOURCE — saaray formats nikale ja rahe hain... ]', 'warn', 1100);
+  try {
+    var result = null, modeText = '';
+    var backendRes = await tryBackend(url);
+    if (backendRes) {
+      result = backendRes.data;
+      modeText = 'MODE: BACKEND (yt-dlp) — 403-fix ON, downloads server se stream honge';
+    } else {
+      result = await tryRapidApi(url);
+      modeText = 'MODE: RapidAPI (bina backend) — saaray formats aa gaye hain, lekin seedhe links kabhi 403 de sakte hain. FULL FINAL ke liye README wala backend lagao.';
+    }
+    logLine('[ ACCESS GRANTED ] — ' + result.videos.length + ' video + ' + result.audios.length + ' audio formats mil gaye', 'ok', 300);
+    $('modeLine').textContent = modeText;
+    renderResult(result);
+    saveHistory({ url: url, title: result.title, platform: platform, when: new Date().toLocaleDateString() });
+  } catch (e) {
+    logError(e.message || 'Extract fail ho gaya.');
+    $('modeLine').textContent = '';
+  } finally {
+    mainBtn.disabled = false; mainBtn.textContent = 'EXTRACT MEDIA';
+  }
+}
+</script>
+</body>
+</html>
