@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ZOHAIB KHAN | ALL TYPE VIDEO DOWNLOADER — TERMINAL v7.0 FINAL</title>
+<title>ZOHAIB KHAN | ALL TYPE VIDEO DOWNLOADER — TERMINAL v7.2 FINAL</title>
 <meta name="description" content="ZOHAIB KHAN All Type Video Downloader — YouTube, TikTok, Instagram, Facebook videos in all video and audio formats.">
 <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
 <style>
@@ -16,7 +16,7 @@ body{background:var(--bg);color:var(--neon);font-family:'Share Tech Mono',monosp
 .wrap{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center;padding:28px 12px 40px}
 .terminal{border:2px solid var(--neon);padding:34px 22px 26px;background:var(--panel);width:100%;max-width:880px;position:relative;box-shadow:0 0 28px rgba(0,255,65,.22),inset 0 0 42px rgba(0,255,65,.04)}
 .terminal::before{content:"SYSTEM_ACCESS: GRANTED";position:absolute;top:-13px;left:18px;background:var(--bg);padding:0 10px;font-size:12px;border:1px solid var(--neon);letter-spacing:1px}
-.terminal::after{content:"v7.0 FINAL";position:absolute;top:-13px;right:18px;background:var(--bg);padding:0 10px;font-size:12px;border:1px solid var(--neon);color:var(--yellow)}
+.terminal::after{content:"v7.2 FINAL";position:absolute;top:-13px;right:18px;background:var(--bg);padding:0 10px;font-size:12px;border:1px solid var(--neon);color:var(--yellow)}
 h1{font-size:clamp(1.7rem,6vw,3rem);text-shadow:0 0 16px var(--neon),0 0 42px rgba(0,255,65,.5);margin:2px 0 4px;letter-spacing:3px;text-align:center;line-height:1.15}
 .glitch{animation:flicker 4s infinite}
 @keyframes flicker{0%,96%,100%{opacity:1}97%{opacity:.55}98%{opacity:1}99%{opacity:.7}}
@@ -75,11 +75,39 @@ button{font-family:inherit;text-transform:uppercase;cursor:pointer;transition:.2
 .footer{text-align:center;margin-top:8px}
 .about-txt{max-width:680px;margin:0 auto}
 .small{font-size:11px;opacity:.65;line-height:1.7}
+/* ---------- Pyaari si simple neeche wali jagah ---------- */
+.nice{text-align:center;margin-top:26px;border-top:1px solid rgba(0,255,65,.35);padding-top:18px}
+.nice h2{color:#fff;font-size:16px;letter-spacing:1px;margin:0 0 10px;text-shadow:0 0 8px var(--neon)}
+.nice p{font-size:13px;line-height:1.8;color:#d7ffd7;margin:6px 0}
+.nice .heart{color:#ff7ab6}
+/* ---------- Sides par REAL butterflies (asli photos, Wikimedia Commons) ---------- */
+.flies{position:fixed;top:0;bottom:0;width:88px;z-index:3;pointer-events:none;overflow:visible}
+.flies.left{left:0}.flies.right{right:0}
+.bfly{position:absolute;left:50%;width:66px;margin-left:-33px;animation:bflyPath 13s ease-in-out infinite alternate;will-change:transform}
+.bfly img{display:block;width:100%;height:auto;filter:drop-shadow(0 4px 7px rgba(0,0,0,.65));animation:bflyBob 2.8s ease-in-out infinite alternate;will-change:transform}
+@keyframes bflyPath{0%{transform:translate(0,0) rotate(-6deg)}30%{transform:translate(7px,-58px) rotate(5deg)}60%{transform:translate(-7px,-20px) rotate(-3deg)}100%{transform:translate(4px,32px) rotate(7deg)}}
+@keyframes bflyBob{from{transform:rotate(-8deg) translateY(0)}to{transform:rotate(9deg) translateY(-8px)}}
+.spark{position:absolute;width:6px;height:6px;border-radius:50%;background:#ffe9f6;box-shadow:0 0 8px #ff9fd0;animation:twinkle 2.6s ease-in-out infinite alternate}
+@keyframes twinkle{from{opacity:.15;transform:scale(.7)}to{opacity:.95;transform:scale(1.25)}}
+@media(max-width:640px){.flies{width:46px}.bfly{width:38px;margin-left:-19px}.spark{display:none}}
+@media(prefers-reduced-motion:reduce){.bfly,.bfly img,.spark,.glitch{animation:none!important}}
 </style>
 </head>
 <body>
 <canvas id="matrix"></canvas>
 <div class="scanlines"></div>
+<div class="flies left" aria-hidden="true">
+  <div class="bfly" style="top:10%;animation-duration:13s;animation-delay:0s"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6c/Danaus_plexippus-transparent.png/330px-Danaus_plexippus-transparent.png" alt="" loading="lazy" style="animation-duration:2.8s" onerror="this.parentNode.style.display='none'"></div>
+  <div class="bfly" style="top:44%;animation-duration:16s;animation-delay:-5s"><img src="https://upload.wikimedia.org/wikipedia/commons/d/de/Blue_morpho_butterfly_300x271.png" alt="" loading="lazy" style="animation-duration:3.4s" onerror="this.parentNode.style.display='none'"></div>
+  <div class="bfly" style="top:76%;animation-duration:14s;animation-delay:-8s"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/5/52/Vanessa_virginiensis-transparent.png/330px-Vanessa_virginiensis-transparent.png" alt="" loading="lazy" style="animation-duration:2.5s" onerror="this.parentNode.style.display='none'"></div>
+  <span class="spark" style="top:30%;left:12px"></span><span class="spark" style="top:62%;left:26px;animation-delay:-1.2s"></span>
+</div>
+<div class="flies right" aria-hidden="true">
+  <div class="bfly" style="top:16%;animation-duration:15s;animation-delay:-3s"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2d/Colias_eurytheme-transparent.png/330px-Colias_eurytheme-transparent.png" alt="" loading="lazy" style="animation-duration:3.1s" onerror="this.parentNode.style.display='none'"></div>
+  <div class="bfly" style="top:50%;animation-duration:12s;animation-delay:-6s"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0a/Speyeria_aphrodite_alcestis-transparent.png/330px-Speyeria_aphrodite_alcestis-transparent.png" alt="" loading="lazy" style="animation-duration:2.6s" onerror="this.parentNode.style.display='none'"></div>
+  <div class="bfly" style="top:80%;animation-duration:17s;animation-delay:-10s"><img src="https://thumb.wikimedia.org/wikipedia/commons/thumb/a/aa/Chlosyne_nycteis-transparent.png/330px-Chlosyne_nycteis-transparent.png" alt="" loading="lazy" style="animation-duration:3.6s" onerror="this.parentNode.style.display='none'"></div>
+  <span class="spark" style="top:38%;right:14px;animation-delay:-.6s"></span><span class="spark" style="top:70%;right:24px;animation-delay:-1.8s"></span>
+</div>
 <div class="wrap">
 <div class="terminal">
   <h1 class="glitch">ZOHAIB ALI KHAN</h1>
@@ -88,19 +116,19 @@ button{font-family:inherit;text-transform:uppercase;cursor:pointer;transition:.2
   <div class="badges">
     <span class="badge">YOUTUBE</span><span class="badge">TIKTOK</span><span class="badge">INSTAGRAM</span>
     <span class="badge">FACEBOOK</span><span class="badge">X / TWITTER</span><span class="badge">DAILYMOTION</span>
-    <span class="badge">VIMEO</span><span class="badge hot">1000+ SITES VIA BACKEND</span>
+    <span class="badge">VIMEO</span><span class="badge hot">HAR QUALITY</span>
   </div>
   <div class="input-row">
     <input type="text" id="targetUrl" placeholder=">> PASTE VIDEO LINK HERE <<" autocomplete="off" spellcheck="false">
     <button class="mini-btn" id="pasteBtn" type="button">[ PASTE ]</button>
     <button class="mini-btn" id="clearBtn" type="button">[ CLEAR ]</button>
   </div>
-  <div id="detect">&gt;&gt; STANDBY — link paste karo, platform khud pehchan lunga...</div>
+  <div id="detect">&gt;&gt; STANDBY — paste a link, the platform will be found for you...</div>
   <button id="mainBtn" type="button">EXTRACT MEDIA</button>
   <div id="log"></div>
   <div id="modeLine"></div>
   <div id="resultBox">
-    <div style="font-size:12px;color:var(--yellow);letter-spacing:1px">[ SOURCE DECRYPTED — SAARAY FORMATS NECHE HAIN ]</div>
+    <div style="font-size:12px;color:var(--yellow);letter-spacing:1px">[ DONE — ALL FORMATS ARE BELOW ]</div>
     <div class="media-head" style="margin-top:12px">
       <img id="thumb" alt="" style="display:none">
       <div class="media-meta">
@@ -113,33 +141,15 @@ button{font-family:inherit;text-transform:uppercase;cursor:pointer;transition:.2
       <div class="col"><h3>VIDEO FORMATS <span class="cnt" id="vCount"></span></h3><div id="videoList"></div></div>
       <div class="col"><h3>AUDIO FORMATS <span class="cnt" id="aCount"></span></h3><div id="audioList"></div></div>
     </div>
-    <p class="small" style="margin-top:10px">Note: 720p / 1080p jaisi bari qualities YouTube par aksar <b>video-only</b> hoti hain — BACKEND mode mein server unke sath audio khud merge karke deta hai. Sirf RapidAPI (bina backend) mode mein kabhi kabhi seedha link 403 de sakta hai — ye YouTube ki pabandi hai, site ka fault nahi.</p>
+    <p class="small" style="margin-top:10px">Press DOWNLOAD next to the quality you like — that's it.</p>
   </div>
-  <div id="historyBox"><h3>[ RECENT DOWNLOADS ]</h3><div id="historyList"></div></div>
-  <div class="section">
-    <h2>[ HOW TO USE — 3 STEPS ]</h2>
-    <div class="steps">
-      <div class="step"><b>STEP 1:</b><br>YouTube / TikTok / Instagram / Facebook se video ka link copy karo.</div>
-      <div class="step"><b>STEP 2:</b><br>Upar box mein PASTE karo aur <b>EXTRACT MEDIA</b> dabao — platform khud detect ho jayega.</div>
-      <div class="step"><b>STEP 3:</b><br>Neeche VIDEO column se quality (1080p / 720p / 480p...) ya AUDIO column se bitrate chun kar DOWNLOAD dabao. Bas!</div>
-    </div>
-  </div>
-  <div class="section">
-    <h2>[ FEATURES ]</h2>
-    <ul>
-      <li><b>Saaray formats, aik sath:</b> Video aik taraf, Audio doosri taraf — har format ke samne uska apna DOWNLOAD button.</li>
-      <li><b>403 Fix (Backend Mode):</b> Download server ke through stream hota hai, is liye googlevideo wala 403 jhanjhat khatam.</li>
-      <li><b>1080p with sound:</b> Backend video-only formats ke sath best audio merge karke deta hai (ffmpeg).</li>
-      <li><b>1000+ sites:</b> Backend yt-dlp par chalta hai — YouTube, TikTok, IG, FB, X aur bohat si sites supported.</li>
-      <li><b>Recent history</b>, paste / copy buttons, mobile-friendly hacker terminal, no-watermark jahan source deta hai.</li>
-      <li><b>Sach wali audio quality:</b> YouTube audio asal mein max ~160 kbps hota hai — jo sites "320 kbps YouTube" likhti hain, wo jhoot bolti hain. Yahan asal bitrate hi dikhega.</li>
-    </ul>
-  </div>
-  <div class="section footer">
-    <h2>[ ABOUT ]</h2>
-    <p class="about-txt"><b style="color:#fff">ZOHAIB KHAN ALL TYPE VIDEO DOWNLOADER</b> — aik hi terminal, har platform. Link paste karo, format chuno, download karo. Na faltu drama, na aik-button wali purani majboori — ab har quality aur har audio bitrate tumhare samne hai, bilkul hacker style mein. Ye tool sirf personal use ke liye hai — <i>download only videos you have permission for.</i></p>
+  <div id="historyBox"><h3>Recent downloads</h3><div id="historyList"></div></div>
+  <div class="nice">
+    <h2>How it works</h2>
+    <p>1. Copy the video link.<br>2. Paste it in the box above and press EXTRACT MEDIA.<br>3. Press DOWNLOAD next to the quality you like.</p>
+    <p style="margin-top:14px"><b style="color:#fff">ZOHAIB KHAN — ALL TYPE VIDEO DOWNLOADER</b> <span class="heart">❤</span><br>YouTube, TikTok, Instagram, Facebook — every video, every quality, in one place.<br>Simple and lovely.</p>
     <a href="https://wa.me/923477411934" target="_blank" rel="noopener" class="wa-link">[ CONTACT ADMIN ]</a>
-    <p class="small" style="margin-top:14px">ENCRYPTED BY ZOHAIB ALI KHAN &copy; 2026 &nbsp;|&nbsp; TERMINAL v7.0 FINAL</p>
+    <p class="small" style="margin-top:14px">MADE WITH <span class="heart">❤</span> BY ZOHAIB ALI KHAN<br>ENCRYPTED BY ZOHAIB ALI KHAN &copy; 2026</p>
   </div>
 </div>
 </div>
@@ -222,7 +232,7 @@ function detectPlatform(raw) {
 }
 urlInput.addEventListener('input', function () {
   var p = detectPlatform(urlInput.value);
-  $('detect').textContent = p ? '>> PLATFORM DETECTED: [ ' + p + ' ]' : '>> STANDBY — link paste karo, platform khud pehchan lunga...';
+  $('detect').textContent = p ? '>> PLATFORM DETECTED: [ ' + p + ' ]' : '>> STANDBY — paste a link, the platform will be found for you...';
 });
 urlInput.addEventListener('keydown', function (e) { if (e.key === 'Enter') startExtraction(); });
 $('pasteBtn').addEventListener('click', function () {
@@ -243,7 +253,9 @@ $('copyBtn').addEventListener('click', function () {
     setTimeout(function () { $('copyBtn').textContent = '[ COPY LINK ]'; }, 1500);
   });
 });
-mainBtn.addEventListener('click', startExtraction);
+/* NOTE: EXTRACT wala click neeche doosri script mein lagta hai,
+   jahan startExtraction banta hai. Yahan lagane se purana bug ata tha:
+   function abhi bana hi nahi hota tha, click kabhi lagta hi nahi tha. */
 
 /* ---------- terminal log ---------- */
 var logTimers = [];
@@ -256,10 +268,19 @@ function logLine(text, cls, delay) {
     logEl.appendChild(div);
   }, delay || 0));
 }
+function logNow(text, cls) {
+  var div = document.createElement('div');
+  if (cls) div.className = cls;
+  div.textContent = text;
+  logEl.appendChild(div);
+}
 function logError(msg) {
-  logLine('', '', 350);
-  logLine('!! ERROR: ' + msg, 'err', 400);
-  logLine('>> Tip: link dobara check karo — video public honi chahiye. Age-restricted / private videos download nahi hotin.', 'dim', 450);
+  // Error ate hi baqi staged lines rok do — warna error ke neeche
+  // purani "Getting all formats..." jaisi lines ati rehti theen.
+  logTimers.forEach(clearTimeout); logTimers = [];
+  logNow('', '');
+  logNow('!! ' + msg, 'err');
+  logNow('>> Check the link and try again.', 'dim');
 }
 
 /* ---------- history (localStorage, last 8) ---------- */
@@ -304,15 +325,15 @@ function renderResult(data) {
   var vl = $('videoList'), al = $('audioList');
   vl.innerHTML = ''; al.innerHTML = '';
 
-  if (!data.videos.length) vl.innerHTML = '<div class="empty-note">Is link mein video format nahi mila.<br>(Photo / sirf-audio wala link ho sakta hai)</div>';
+  if (!data.videos.length) vl.innerHTML = '<div class="empty-note">No video format found in this link.<br>(It may be a photo or audio-only link)</div>';
   data.videos.forEach(function (v) {
     var row = document.createElement('div'); row.className = 'frow';
     var info = [];
     info.push((v.ext || 'mp4').toUpperCase());
     if (v.fps) info.push(Math.round(v.fps) + ' FPS');
     if (v.sizeLabel) info.push(v.sizeLabel); else if (v.size) info.push(fmtSize(v.size));
-    if (v.hasAudio === false && data.source === 'backend-yt-dlp') info.push('VIDEO-ONLY → backend audio merge karega');
-    if (v.hasAudio === true) info.push('SOUND KE SATH');
+    if (v.hasAudio === true) info.push('WITH SOUND');
+    if (v.infoNote) info.push(v.infoNote);
     row.innerHTML = '<div class="q">' + esc(v.quality || v.label || '') + '</div>' +
       '<div class="info">' + esc(info.join(' · ')) + '</div>';
     var a = document.createElement('a');
@@ -321,12 +342,13 @@ function renderResult(data) {
     row.appendChild(a); vl.appendChild(row);
   });
 
-  if (!data.audios.length) al.innerHTML = '<div class="empty-note">Alag audio format nahi mila.<br>Video formats mein sound shamil ho sakta hai.</div>';
+  if (!data.audios.length) al.innerHTML = '<div class="empty-note">No separate audio found.<br>The video formats may include sound.</div>';
   data.audios.forEach(function (au) {
     var row = document.createElement('div'); row.className = 'frow';
     var info = [];
     info.push((au.ext || 'm4a').toUpperCase());
     if (au.sizeLabel) info.push(au.sizeLabel); else if (au.size) info.push(fmtSize(au.size));
+    if (au.infoNote) info.push(au.infoNote);
     row.innerHTML = '<div class="q">' + esc(au.quality || (au.abr + 'k')) + '</div>' +
       '<div class="info">' + esc(info.join(' · ') || 'AUDIO ONLY') + '</div>';
     var a = document.createElement('a');
@@ -370,31 +392,31 @@ function normalizeBackend(data, srcUrl, base) {
   return out;
 }
 async function tryBackend(srcUrl) {
+  // Backend ko sirf 6 second do — jawab na aaye to chup chaap
+  // RapidAPI wala purana tareeka chalega, user ko intezaar nahi hoga.
+  // Return: {data, base} kamyabi par, warna {fail:'network'|'http'}.
   var bases = [];
   if (BACKEND_URL) bases.push(BACKEND_URL.replace(/\/$/, ''));
   bases.push(''); // same-origin
+  var lastFail = 'http';
   for (var i = 0; i < bases.length; i++) {
     var base = bases[i];
     try {
+      var ctrl = ('AbortController' in window) ? new AbortController() : null;
+      var timer = ctrl ? setTimeout(function () { ctrl.abort(); }, 6000) : null;
       var resp = await fetch(base + '/api/extract', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ url: srcUrl })
+        body: JSON.stringify({ url: srcUrl }), signal: ctrl ? ctrl.signal : undefined
       });
-      if (resp.status === 404 || resp.status === 501) continue; // backend hi nahi hai yahan
+      if (timer) clearTimeout(timer);
+      if (!resp.ok) { lastFail = 'http'; continue; }
       var data = await resp.json().catch(function () { return null; });
-      if (!resp.ok) throw new Error((data && data.error) || ('Backend error ' + resp.status));
-      if (!data || (!data.videos && !data.audios)) continue;
+      if (!data || (!data.videos && !data.audios)) { lastFail = 'http'; continue; }
+      if (!data.videos.length && !data.audios.length) { lastFail = 'http'; continue; }
       return { data: normalizeBackend(data, srcUrl, base), base: base };
-    } catch (e) {
-      if (BACKEND_URL) throw e; // user ne khud backend set kiya hai — usi ki error dikhao
-      if (i === bases.length - 1 && bases.length > 1 && BACKEND_URL) throw e;
-      // same-origin par backend nahi mila to RapidAPI par fall through
-      if (String(e.message || '').indexOf('Backend error') === 0) continue;
-      if (e.name === 'TypeError') continue;
-      throw e;
-    }
+    } catch (e) { lastFail = 'network'; continue; }
   }
-  return null;
+  return { fail: lastFail };
 }
 
 /* ---------- RapidAPI FALLBACK mode — AB SAARAY formats ---------- */
@@ -447,16 +469,139 @@ function normalizeRapid(data, srcUrl) {
   out.audios.sort(function (a, b) { return b._q - a._q; });
   return out;
 }
+/* Har source ki nakami ki ASAL wajah — taake user ko generic
+   "Video not found" ki jagah sach pata chale ke hua kya hai. */
+function srcError(kind, msg, status) {
+  var e = new Error(msg); e.kind = kind; e.status = status; return e;
+}
+function apiMsgText(data) {
+  var m = data && (data.message || data.error || data.msg);
+  if (typeof m !== 'string') return '';
+  return m.replace(/\s+/g, ' ').slice(0, 80);
+}
 async function tryRapidApi(srcUrl) {
-  var resp = await fetch('https://' + RAPIDAPI_HOST + '/v1/social/autolink', {
-    method: 'POST',
-    headers: { 'x-rapidapi-key': RAPIDAPI_KEY, 'x-rapidapi-host': RAPIDAPI_HOST, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ url: srcUrl })
-  });
+  var resp;
+  try {
+    resp = await fetch('https://' + RAPIDAPI_HOST + '/v1/social/autolink', {
+      method: 'POST',
+      headers: { 'x-rapidapi-key': RAPIDAPI_KEY, 'x-rapidapi-host': RAPIDAPI_HOST, 'Content-Type': 'application/json' },
+      body: JSON.stringify({ url: srcUrl })
+    });
+  } catch (e) {
+    throw srcError('network', 'no answer — network blocked');
+  }
   var data = await resp.json().catch(function () { return null; });
-  if (!resp.ok || !data) throw new Error('RapidAPI se jawab nahi aya (status ' + resp.status + '). Key / quota check karo, ya backend mode use karo.');
+  if (resp.status === 429) throw srcError('limit', 'limit finished (429)', 429);
+  if (resp.status === 401 || resp.status === 403) throw srcError('key', 'key problem (' + resp.status + ')', resp.status);
+  if (!resp.ok) {
+    var am = apiMsgText(data);
+    throw srcError('http', 'status ' + resp.status + (am ? ' — ' + am : ''), resp.status);
+  }
+  if (!data) throw srcError('http', 'bad reply from API');
   var out = normalizeRapid(data, srcUrl);
-  if (!out.videos.length && !out.audios.length) throw new Error('Is link se koi format extract nahi hua. Doosra link try karo ya backend mode lagao.');
+  if (!out.videos.length && !out.audios.length) throw srcError('empty', 'no formats found for this video');
+  return out;
+}
+/* tryRapidApi ko aise chalao ke nakami throw na kare — {data} ya {error} mile. */
+async function tryRapidApiC(srcUrl) {
+  try { return { data: await tryRapidApi(srcUrl) }; }
+  catch (e) { return { error: { kind: e.kind || 'http', msg: e.message || 'failed', status: e.status } }; }
+}
+function failReason(f) {
+  if (f.kind === 'network') return 'no answer — network blocked';
+  if (f.kind === 'limit') return 'limit finished (429)';
+  if (f.kind === 'key') return 'key problem (' + (f.status || '') + ')';
+  if (f.kind === 'empty') return 'no formats found';
+  return f.msg || ('status ' + (f.status || ''));
+}
+function pickMainError(fails) {
+  var i, f;
+  for (i = 0; i < fails.length; i++) if (fails[i].kind === 'limit')
+    return 'API limit finished for now — try again later, or use the server version.';
+  var allNet = fails.length > 0;
+  for (i = 0; i < fails.length; i++) if (fails[i].kind !== 'network') allNet = false;
+  if (allNet)
+    return 'Could not reach the internet from this page. If you opened this file in a preview (like inside Muse), downloads will not work there — open it from your live website link (Vercel) and try again. Also check VPN / internet.';
+  for (i = 0; i < fails.length; i++) if (fails[i].kind === 'key')
+    return 'API key problem — the API refused the key. The server version does not need this key.';
+  for (i = 0; i < fails.length; i++) if (fails[i].kind === 'http') {
+    f = fails[i];
+    return 'The API could not find this video (status ' + (f.status || '?') + ').';
+  }
+  return 'Video not found — check the link and try again.';
+}
+function reportFailure(fails) {
+  // Pehle pending staged lines roko, phir har source ki wajah, phir asal error.
+  logTimers.forEach(clearTimeout); logTimers = [];
+  var shown = 0;
+  (fails || []).forEach(function (f) {
+    if (f.silent) return;
+    shown++;
+    logNow('[ Source ' + shown + ' (' + f.name + '): ' + failReason(f) + ' ]', 'dim');
+  });
+  logNow('', '');
+  logNow('!! ' + pickMainError(fails || []), 'err');
+  logNow('>> Check the link and try again.', 'dim');
+  $('modeLine').textContent = '';
+}
+
+/* ---------- TikTok HD source: tikwm (hdplay = asal HD stream) ---------- */
+async function tryTikwm(srcUrl) {
+  // Hamesha {data} ya {error:{kind,msg,status}} return hota hai — kabhi throw nahi,
+  // taake upar log mein is source ki nakami ki wajah likhi ja sake.
+  try {
+    var ctrl = ('AbortController' in window) ? new AbortController() : null;
+    var timer = ctrl ? setTimeout(function () { ctrl.abort(); }, 10000) : null;
+    var resp = await fetch('https://www.tikwm.com/api/?url=' + encodeURIComponent(srcUrl) + '&hd=1', {
+      signal: ctrl ? ctrl.signal : undefined
+    });
+    if (timer) clearTimeout(timer);
+    if (!resp.ok) return { error: { kind: 'http', msg: 'status ' + resp.status, status: resp.status } };
+    var j = await resp.json().catch(function () { return null; });
+    if (!j || j.code !== 0 || !j.data) return { error: { kind: 'empty', msg: 'no video in reply' } };
+    if (!j.data.hdplay && !j.data.play && !j.data.music) return { error: { kind: 'empty', msg: 'no formats in reply' } };
+    return { data: j.data };
+  } catch (e) { return { error: { kind: 'network', msg: 'no answer — network blocked' } }; }
+}
+function normalizeTikwm(d, srcUrl) {
+  var out = {
+    source: 'tikwm', title: d.title || 'Untitled',
+    thumbnail: d.cover || null,
+    duration: typeof d.duration === 'number' ? d.duration : null, durationLabel: null,
+    uploader: (d.author && (d.author.nickname || d.author.unique_id)) || null,
+    platform: 'TIKTOK', webpage_url: srcUrl, videos: [], audios: []
+  };
+  if (d.hdplay) out.videos.push({
+    quality: 'HD', height: 1080, ext: 'mp4', fps: null,
+    size: d.hd_size || null, sizeLabel: d.hd_size ? fmtSize(d.hd_size) : '',
+    hasAudio: true, infoNote: 'Best quality · No watermark', dl: d.hdplay, _q: 9999
+  });
+  if (d.play && d.play !== d.hdplay) out.videos.push({
+    quality: 'SD', height: 720, ext: 'mp4', fps: null,
+    size: d.size || null, sizeLabel: d.size ? fmtSize(d.size) : '',
+    hasAudio: true, infoNote: 'No watermark', dl: d.play, _q: 2000
+  });
+  if (d.music) out.audios.push({
+    quality: 'MP3', abr: 0, ext: 'mp3',
+    size: null, sizeLabel: '', infoNote: 'Music · No watermark', dl: d.music, _q: 9999
+  });
+  return out;
+}
+function mergeTikwm(base, tw) {
+  // HD wali row hamesha sab se upar, phir SD, phir RapidAPI wali rows.
+  var seenV = {}, seenA = {}, videos = [], audios = [];
+  tw.videos.forEach(function (v) { if (!seenV[v.dl]) { seenV[v.dl] = 1; videos.push(v); } });
+  (base ? base.videos : []).forEach(function (v) { if (!seenV[v.dl]) { seenV[v.dl] = 1; videos.push(v); } });
+  tw.audios.forEach(function (a) { if (!seenA[a.dl]) { seenA[a.dl] = 1; audios.push(a); } });
+  (base ? base.audios : []).forEach(function (a) { if (!seenA[a.dl]) { seenA[a.dl] = 1; audios.push(a); } });
+  var out = base || tw;
+  out.videos = videos; out.audios = audios;
+  // TikTok ke liye tikwm wala title / uploader / duration zyada bharosay wala hai.
+  if (tw.title) out.title = tw.title;
+  if (!out.thumbnail && tw.thumbnail) out.thumbnail = tw.thumbnail;
+  if (tw.uploader) out.uploader = tw.uploader;
+  if (tw.duration) out.duration = tw.duration;
+  out.source = base ? 'rapidapi+tikwm' : 'tikwm';
   return out;
 }
 
@@ -464,36 +609,63 @@ async function tryRapidApi(srcUrl) {
 async function startExtraction() {
   var url = urlInput.value.trim();
   logReset();
-  if (!url) { logLine('!! URL REQUIRED — pehle link paste karo !!', 'err', 0); return; }
-  if (!/^https?:\/\//i.test(url)) { logLine('!! Ye sahi link nahi lag raha — https:// wala poora link paste karo !!', 'err', 0); return; }
+  if (!url) { logLine('!! Paste a link first !!', 'err', 0); return; }
+  if (!/^https?:\/\//i.test(url)) { logLine('!! This link does not look right — paste the full link !!', 'err', 0); return; }
   var platform = detectPlatform(url) || 'WEB';
-  mainBtn.disabled = true; mainBtn.textContent = 'EXTRACTING...';
+  mainBtn.disabled = true; mainBtn.textContent = 'PLEASE WAIT, SEARCHING...';
   $('resultBox').style.display = 'none';
-  logLine('> TARGET LOCKED: [ ' + platform + ' ]', 'dim', 0);
-  logLine('[ ANALYZING PACKETS... ]', 'warn', 200);
-  logLine('[ BYPASSING SERVER CHECKS... ]', 'warn', 600);
-  logLine('[ DECRYPTING SOURCE — saaray formats nikale ja rahe hain... ]', 'warn', 1100);
+  logLine('> Link received: [ ' + platform + ' ]', 'dim', 0);
+  logLine('[ Looking for your video... ]', 'warn', 120);
+  logLine('[ Getting all formats... ]', 'warn', 280);
   try {
-    var result = null, modeText = '';
+    var result = null;
+    var fails = [];
     var backendRes = await tryBackend(url);
-    if (backendRes) {
+    if (backendRes && backendRes.data) {
       result = backendRes.data;
-      modeText = 'MODE: BACKEND (yt-dlp) — 403-fix ON, downloads server se stream honge';
     } else {
-      result = await tryRapidApi(url);
-      modeText = 'MODE: RapidAPI (bina backend) — saaray formats aa gaye hain, lekin seedhe links kabhi 403 de sakte hain. FULL FINAL ke liye README wala backend lagao.';
+      // Backend ki nakami sirf tab gin-na jab user ne khud BACKEND_URL set kiya ho —
+      // static site (Vercel) par same-origin probe ka 404 aam baat hai, ghalti nahi.
+      if (BACKEND_URL && backendRes && backendRes.fail) fails.push({ name: 'Server', kind: backendRes.fail, silent: true });
+      if (/tiktok\.com/i.test(url)) {
+        // TikTok: tikwm (HD) aur RapidAPI dono ko sath bulao, phir mila do.
+        var both = await Promise.all([tryTikwm(url), tryRapidApiC(url)]);
+        var twR = both[0], rpR = both[1];
+        if (twR.error) fails.push({ name: 'TikTok HD', kind: twR.error.kind, msg: twR.error.msg, status: twR.error.status });
+        if (rpR.error) fails.push({ name: 'API', kind: rpR.error.kind, msg: rpR.error.msg, status: rpR.error.status });
+        if (twR.data) result = mergeTikwm(rpR.data || null, normalizeTikwm(twR.data, url));
+        else if (rpR.data) result = rpR.data;
+      } else {
+        var r2 = await tryRapidApiC(url);
+        if (r2.data) result = r2.data;
+        else fails.push({ name: 'API', kind: r2.error.kind, msg: r2.error.msg, status: r2.error.status });
+      }
     }
-    logLine('[ ACCESS GRANTED ] — ' + result.videos.length + ' video + ' + result.audios.length + ' audio formats mil gaye', 'ok', 300);
-    $('modeLine').textContent = modeText;
+    if (!result) { var fe = new Error('all sources failed'); fe.fails = fails; throw fe; }
+    // Kuch sources fail hue lekin result mil gaya — wajah dim line mein bata do.
+    logTimers.forEach(clearTimeout); logTimers = [];
+    var shownF = 0;
+    fails.forEach(function (f) {
+      if (f.silent) return;
+      shownF++;
+      logNow('[ Source ' + shownF + ' (' + f.name + '): ' + failReason(f) + ' ]', 'dim');
+    });
+    logNow('[ DONE ] — ' + result.videos.length + ' video and ' + result.audios.length + ' audio formats found', 'ok');
+    $('modeLine').textContent = 'Ready — press DOWNLOAD next to the quality you like';
     renderResult(result);
     saveHistory({ url: url, title: result.title, platform: platform, when: new Date().toLocaleDateString() });
   } catch (e) {
-    logError(e.message || 'Extract fail ho gaya.');
+    if (e && e.fails) reportFailure(e.fails);
+    else logError(e.message || 'Video not found — check the link and try again.');
     $('modeLine').textContent = '';
   } finally {
     mainBtn.disabled = false; mainBtn.textContent = 'EXTRACT MEDIA';
   }
 }
+
+/* EXTRACT wala click YAHAN lagta hai — startExtraction ke baad.
+   Yahi woh fix hai jis se ab click par sach mein kaam hoga. */
+mainBtn.addEventListener('click', function () { startExtraction(); });
 </script>
 </body>
 </html>
